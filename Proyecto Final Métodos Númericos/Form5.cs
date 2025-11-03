@@ -207,7 +207,21 @@ namespace Proyecto_Final_Métodos_Númericos
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            NavigateToForm2();
+
+            // Open Form2 modally to avoid multiple visible forms
+            this.Hide();
+            try
+            {
+                using (var f = new Form2())
+                {
+                    f.StartPosition = FormStartPosition.CenterScreen;
+                    f.ShowDialog();
+                }
+            }
+            finally
+            {
+                this.Close();
+            }
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
